@@ -75,7 +75,8 @@ SELECT EMPNO, ENAME, JOB, SAL,
 FROM EMP;
 
 
---Q1 
+--Q1 EMPNO 열에는 EMP 테이블에서 사원 이름이 다섯글자 이상이며 여섯글자 미만인 사원 정보를 출력, MASKING_EMPNO 열에는 사원번호 앞 두자리 외 뒷자리를 * 로 출력,
+-- 그리고 MASKING_ENAME 열에는 사원 이름의 첫 글자만 보여주고 나머지 글자 수만큼 * 로 출력해라
 SELECT EMPNO,
         CONCAT(SUBSTR(EMPNO, 1,2), '**') AS MASKING_EMPNO,
         ENAME,
@@ -85,7 +86,7 @@ FROM EMP
 WHERE LENGTH(ENAME) = 5;
 
 
---Q2
+--Q2 EMP 테이블에서 사원들의 월 평균 근무일 수는 21.5일이다. 하루 근무 시간을 8시간으로 보았을 때 하루 급여와 시급을 계산하여 출력해라. 단 하루 급여는 소수점 세번째 자리에서 버리고, 시급은 두번째 소수점에서 반올림해라
 SELECT EMPNO,
         ENAME,
         SAL,
@@ -95,7 +96,7 @@ SELECT EMPNO,
 FROM EMP;
 
 
---Q3
+--Q3 EMP 테이블에서 사원들은 입사일 기준으로 3개월이 지난 후 첫 월요일에 정직원이 된다. 정직원이 되는 날짜를 YYYY-MM-DD 형식으로 출력해라. 단 추가수당이 없는 사원의 추가수당은 N/A로 출력
 SELECT EMPNO, ENAME, TO_CHAR(HIREDATE,'YYYY/MM/DD') AS HIREDATE, 
         TO_CHAR(NEXT_DAY(ADD_MONTHS(HIREDATE, 3), '월'), 'YYYY-MM-DD') AS R_JOB, NVL2(COMM, '0', 'N/A') AS COMM
 FROM EMP
