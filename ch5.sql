@@ -64,13 +64,13 @@ WHERE DEPTNO = '10';
 
 
 
---Q1  
+--Q1 EMP 테이블을 사용하여 다음과 같이 사원이름이 S로 끝나는 사원 데이터를 모두 출력해라  
 SELECT *
 FROM EMP
 WHERE ENAME LIKE '%S';  --큰 따옴표는 에러남
 
 
---Q2 
+--Q2 EMP 테이블을 사용해 30번 부서에서 근무하고 있는 사원 중 직책이 SALESMAN인 사원의 사원번호, 이름, 직책, 급여, 부서번호를 출력해라
 SELECT EMPNO, ENAME, JOB, SAL, DEPTNO
 FROM EMP
 WHERE DEPTNO = '30' AND JOB = 'SALESMAN';
@@ -81,7 +81,7 @@ FROM EMP
 WHERE DEPTNO = '30';
 
 
---Q3 
+--Q3 EMP 테이블을 사용해 20번, 30번 부서에 근무하고 있는 사원 중 급여가 2000 초과인 사원을 두 가지 방식의 SELECT문을 사용하여 사원번호, 이름, 급여, 부서번호를 출력해라
 --집합 연산자 사용하지 않은 방식
 SELECT EMPNO, ENAME, JOB, SAL, DEPTNO
 FROM EMP
@@ -97,7 +97,7 @@ FROM EMP
 WHERE DEPTNO = '30' AND SAL > 2000;
 
 
---Q4
+--Q4 NOT BETWEEN A AND B 연산자를 쓰지 않고, 급여 열 값이 2000 이상 3000 이하 범위 이외의 값을 가진 데이터만 출력해라
 SELECT *
 FROM EMP 
 WHERE SAL < 2000 OR SAL > 3000;
@@ -108,13 +108,13 @@ FROM EMP
 WHERE SAL NOT BETWEEN 2000 AND 3000;
 
 
---Q5
+--Q5 사원 이름에 E가 포함되어 있는 30번 부서의 사원 중 급여가 1000~2000 사이가 아닌 사원 이름, 사원번호, 급여, 부서번호를 출력해라
 SELECT ENAME, EMPNO, SAL, DEPTNO
 FROM EMP
 WHERE SAL NOT BETWEEN 1000 AND 2000 AND DEPTNO = '30';
 
 
---Q6
+--Q6 추가 수당이 존재하지 않고 상급자가 있고 직책이 MANAGER, CLERK인 사원 중 사원 이름 두번째 글자가 L이 아닌 사원 정보를 출력해라
 SELECT *
 FROM EMP
 WHERE COMM IS NULL 
