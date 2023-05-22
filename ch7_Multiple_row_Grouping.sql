@@ -87,32 +87,32 @@ GROUP BY DEPTNO, ROLLUP(JOB);
 
 
 
---Q1
+--Q1 EMP 테이블을 이용해 부서번호, 평균 급여, 최고 급여, 최저 급여, 사원 수를 출력해라. 단 평균 급여를 출력할 때 소수점을 제외하고 각 부서번호 별로 출력해라
 SELECT DEPTNO, TRUNC(AVG(SAL)), MAX(SAL), MIN(SAL), COUNT(*) AS CNT
 FROM EMP
 GROUP BY DEPTNO;
 
 
---Q2
+--Q2 같은 직책에 종사하는 사원이 3명 이상인 직책과 인원수를 출력해라
 SELECT JOB, COUNT(*)
 FROM EMP
 GROUP BY JOB
 HAVING COUNT(*) >= 3;
 
 
---Q3
+--Q3 사원들의 입사연도를 기준으로 부서별로 몇 명이 입사했는지 출력해라
 SELECT TO_CHAR(HIREDATE, 'YYYY') AS HIRE_YEAR, DEPTNO, COUNT(*) AS CNT
 FROM EMP
 GROUP BY TO_CHAR(HIREDATE, 'YYYY'), DEPTNO;
 
 
---Q4
+--Q4 추가수당을 받는 사원 수와 받지 않는 사원 수를 출력해라
 SELECT NVL2(COMM, 'O', 'X') AS EXIST_COMM, COUNT(*) AS CNT
 FROM EMP
 GROUP BY NVL2(COMM, 'O', 'X');
 
 
---Q5
+--Q5 각 부서의 입사 연도별 사원 수, 최고 급여, 급여 합, 평균 급여를 출력하고 각 부서별 소계와 총계를 출력해라
 SELECT DEPTNO, TO_CHAR(HIREDATE, 'YYYY') AS HIRE_YEAR, COUNT(*) AS CNT,
         MAX(SAL), SUM(SAL), AVG(SAL)
 FROM EMP
