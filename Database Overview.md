@@ -28,7 +28,7 @@ NOSQL (정확도 100% 안됨)
   - grant connect, resource to scott;
 
 
-#### 
+#### 테이블 생성 문법
 ``` sql
 CREATE TABLE DEPT(
          DEPTNO NUMBER(2) CONSTRAINT PK_DEPT PRIMARY KEY, 	
