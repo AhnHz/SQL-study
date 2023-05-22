@@ -54,14 +54,14 @@ ORDER BY DNO DESC, ENAME;
 
 
 --Practice
---Q1
+--Q1 다음 문장의 빈칸을 채워라
 1. SELECT
 2. FROM
 
---Q2
+--Q2 EMP 테이블의 JOB열 데이터를 중복 없이 출력해라
 SELECT DISTINCT JOB FROM EMP;
 
---Q3
+--Q3 다음 조건을 만족하는 SQL문을 작성해라
 SELECT
     EMPNO  AS EMPLOYEE_NO,
     ENAME  AS EMPLOYEE_NAME,
