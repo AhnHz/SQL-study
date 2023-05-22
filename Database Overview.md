@@ -23,7 +23,31 @@ NOSQL (정확도 100% 안됨)
 
 2. SCOTT User 생성 및 권한 주기
 - conn/as sysdba 실행
-- show user
 
-+ create user scott identified by 1234 ;
-+ grant connect, resource to scott;
+  - create user scott identified by 1234 ;
+  - grant connect, resource to scott;
+
+
+#### 
+``` sql
+CREATE TABLE DEPT(
+         DEPTNO NUMBER(2) CONSTRAINT PK_DEPT PRIMARY KEY, 	
+         DNAME VARCHAR2(14), 								
+         LOC   VARCHAR2(13) ) ;
+DESC DEPT;
+
+DROP TABLE DEPT;
+
+CREATE TABLE EMP
+        (EMPNO NUMBER(4) CONSTRAINT PK_EMP PRIMARY KEY, 
+         ENAME VARCHAR2(10), 								
+         JOB   VARCHAR2(9),  								
+         MGR   NUMBER(4), 									
+         HIREDATE DATE, 									
+         SAL NUMBER(7,2), 									
+         COMM NUMBER(7,2), 									
+         DNO NUMBER(2) CONSTRAINT FK_DNO REFERENCES DEPT);
+DESC EMP;
+
+DROP TABLE EMP;
+```
