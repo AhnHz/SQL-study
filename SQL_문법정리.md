@@ -162,7 +162,7 @@ UPDATE 테이블
    SET 컬럼 = '값'
  WHERE 컬럼 = '조건값'
  
--- DELETE
+-- DELETE(삭제)
 DELETE FROM 테이블
 WHERE 컬럼 = '조건값'
 ```
