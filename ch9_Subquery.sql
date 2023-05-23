@@ -73,14 +73,14 @@ FROM EMP E;
 
 
 
---Q1
+--Q1 전체 사원 중 ALLEN과 같은 직책의 사원들의 사원 정보, 부서 정보를 다음과 같이 출력해라
 SELECT JOB, EMPNO, ENAME, SAL, D.DEPTNO, DNAME
 FROM EMP E, DEPT D
 WHERE E.DEPTNO = D.DEPTNO
 AND JOB = (SELECT JOB FROM EMP WHERE ENAME = 'ALLEN');
 
 
---Q2
+--Q2 전체 사원의 평균 급여보다 높은 급여를 받는 사원들의 사원 정보, 부서 정보, 급여 등급 정보를 출력해라
 SELECT EMPNO, ENAME, DNAME, HIREDATE, LOC, SAL--, GRADE
 FROM EMP E, DEPT D
 WHERE E.DEPTNO = D.DEPTNO
@@ -88,7 +88,7 @@ AND SAL > (SELECT AVG(SAL) FROM EMP)
 ORDER BY SAL DESC, EMPNO;
 
 
---Q3
+--Q3 10번 부서에 근무하는 사원 중 30번 부서에는 존재하지 않는 직책을 가진 사원들의 사원 정보, 부서 정보를 출력해라
 SELECT EMPNO, ENAME, JOB, D.DEPTNO, DNAME, LOC
 FROM EMP E, DEPT D
 WHERE E.DEPTNO = D.DEPTNO
@@ -96,7 +96,7 @@ AND D.DEPTNO = 10
 AND JOB NOT IN (SELECT JOB FROM EMP WHERE DEPTNO = 30);
 
 
---Q4
+--Q4 직책이 SALESMAN인 사람들의 최고 급여보다 높은 급여를 받는 사원들의 사원 정보, 급여 등급 정보를 출력해라
 SELECT EMPNO, ENAME, SAL--, GRADE
 FROM EMP E, DEPT D
 WHERE E.DEPTNO = D.DEPTNO
