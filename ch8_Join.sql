@@ -8,12 +8,14 @@
 ;
 
 
+
 --NATURAL JOIN
     SELECT * FROM emp --중복, 중복제외 EMP, 중복제외 DEPT
     NATURAL JOIN dept;
     
     SELECT * FROM DEPT  --중복, 중복제외 DEPT, 중복제외 EMP
     NATURAL JOIN EMP;
+    
     
 --EQUAL JOIN
     SELECT * FROM Emp, Dept
@@ -63,6 +65,7 @@
     ON A.DEPTNO = B.DEPTNO
     ORDER BY A.DEPTNO;
     
+    
 /*    
 INSERT INTO EMP
 SELECT * FROM EMP WHERE EMPNO = 7369; */
@@ -76,14 +79,14 @@ SELECT * FROM DEPT; --4
 
 
 
---Q1
+--Q1 급여가 2000 초과인 사원들의 부서 정보, 사원 정보를 오른쪽과 같이 출력해라 
 SELECT D.DEPTNO, D.DNAME, E.EMPNO, E.ENAME, SAL
 FROM EMP E, DEPT D
 WHERE E.DEPTNO = D.DEPTNO AND SAL > 2000
 ORDER BY D.DEPTNO, D.DNAME;
 
 
---Q2
+--Q2 오른쪽과 같이 각 부서별 평균 급여, 최대 급여, 최소 급여, 사원수를 출력해라
 SELECT D.DEPTNO, D.DNAME, TRUNC(AVG(SAL)) AVG_SAL, MAX(SAL) MAX_SAL, MIN(SAL) MIN_SAL, COUNT(*) CNT
 FROM EMP E, DEPT D
 WHERE E.DEPTNO = D.DEPTNO
@@ -91,7 +94,7 @@ GROUP BY D.DEPTNO, D.DNAME;
 --ORDER BY D.DEPTNO, D.DNAME;
 
 
---Q3
+--Q3 모든 부서 정보와 사원 정보를 부서번호, 사원이름 순으로 정렬하여 출력해라
 SELECT D.DEPTNO, DNAME, E.EMPNO, ENAME, JOB, SAL
 FROM EMP E RIGHT OUTER JOIN DEPT D  --DEPT ALL
 ON E.DEPTNO = D.DEPTNO
@@ -100,7 +103,7 @@ ORDER BY D.DEPTNO, E.ENAME;
 
 SELECT * FROM SALGRADE;
 
---Q4
+--Q4 모든 부서 정보, 사원 정보, 급여등급 정보를 부서번호, 사원번호 순서로 정렬해 출력해라
 SELECT D.DEPTNO, DNAME, EMPNO, ENAME, MGR, SAL, E.DEPTNO, S.LOSAL, S.HISAL, GRADE
 FROM SALGRADE S, EMP E FULL OUTER JOIN DEPT D
 ON E.DEPTNO = D.DEPTNO
