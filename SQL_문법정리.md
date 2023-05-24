@@ -169,6 +169,21 @@ WHERE 컬럼 = '조건값'
 **`CRUD(CREATE, READ, UPDAE, DELETE)`**
 
 
+
+# DDL (데이터 정의어)
+- 객체(테이블, 뷰, 인덱스, 시노님, ..)
+
+```sql
+Create Table(객체) EMP(객체 이름)
+{empno number,
+...}
+
+Alter table(객체)  EMP(객체 이름)
+
+--테이블(이름 변경)
+Rename Emp To Emp_ren;
+```
+
 ## 컬럼 추가(add)
 ```sql
 Alter table(객체)  EMP(객체 이름)
@@ -195,21 +210,8 @@ Drop table(객체)  EMP(객체 이름);
 ```
 
 
-# DDL (데이터 정의어)
-- 객체(테이블, 뷰, 인덱스, 시노님, ..)
-
-```sql
-Create Table(객체) EMP(객체 이름)
-{empno number,
-...}
-
-Alter table(객체)  EMP(객체 이름)
-
---테이블(이름 변경)
-Rename Emp To Emp_ren;
-```
-
 ***
+
 
 
 ## 헷갈리는 삭제 명령어 (DROP / DELETE/ TRUNCATE)
