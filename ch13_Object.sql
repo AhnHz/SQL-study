@@ -247,20 +247,23 @@ DROP SYNONYM E;
 
 
 
---Q1
+--Q1 
+--1) EMP 테이블과 같은 구조의 데이터를 저장하는 EMPIDX 테이블을 만들어라
 CREATE TABLE EMPIDX
 AS SELECT * FROM EMP;
 
+--2) EMPIDX 테이블의 EMPNO 열에 IDX_EMPIDX_EMPNO 인덱스를 만들어라
 CREATE INDEX IDX_EMPIDX_EMPNO
     ON EMPIDX(EMPNO);
     
+--3) 인덱스가 잘 생성되었는지 적절한 데이터 사전 뷰로 확인해라    
 SELECT * FROM USER_IND_COLUMNS
 WHERE INDEX_NAME = 'IDX_EMPIDX_EMPNO';
 
 
---Q2 수식을 사용한 표현식은 별칭을 주어야 오류가 안남!
+--Q2 EMPIDX 테이블의 데이터 중 급여가 1500 초과인 사원들만 출력하는 EMPIDX_OVER15K 뷰를 생성해라 (추가수당 열은 수당이 존재하면 O, 존재하지 않으면 X)
 CREATE VIEW EMPIDX_OVER15K
-AS (SELECT E.EMPNO, E.ENAME, E.JOB, E.DEPTNO, E.SAL, 
+AS (SELECT E.EMPNO, E.ENAME, E.JOB, E.DEPTNO, E.SAL,   --수식을 사용한 표현식은 별칭을 주어야 오류가 안남!
     NVL2(COMM, 'O', 'X') COMM
     FROM EMP E
     WHERE E.SAL > 1500);
@@ -269,13 +272,13 @@ SELECT * FROM EMPIDX_OVER15K;
 
 
 --Q3
---1)
+--1) DEPT 테이블과 같은 구조의 구성을 가지는 DEPTSEQ 테이블을 작성해라 
 CREATE TABLE DEPTSEQ
 AS SELECT * FROM DEPT;
 
 --SELECT * FROM DEPTSEQ;
 
---2)
+--2) 생성한 DEPTSEQ 테이블의 DEPTNO 열에 사용할 시퀀스를 생성해라
 CREATE SEQUENCE SEQ_DEPTSEQ
     INCREMENT BY 1
     START WITH 1
@@ -289,7 +292,7 @@ SELECT *
  WHERE SEQUENCE_NAME = 'SEQ_DEPTSEQ';
 
 
---3)
+--3) DEPTSEQ를 사용해 오른쪽과 같이 세 개 부서를 추가해라
 SELECT * FROM DEPTSEQ;
 
 INSERT INTO DEPTSEQ (DEPTNO, DNAME, LOC)
