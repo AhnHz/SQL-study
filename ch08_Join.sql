@@ -1,8 +1,8 @@
 조인
 - 내추럴 조인
-- Equal (등가)
+- Equi (등가)
      
-- not-equal (비등가)
+- not-equi (비등가)
 - Self join
 - Outer join(left/right/full)
 ;
@@ -17,7 +17,7 @@
     NATURAL JOIN EMP;
     
     
---EQUAL JOIN
+--EQUI JOIN
     SELECT * FROM Emp, Dept
     WHERE Emp.Deptno = Dept.Deptno;
      
