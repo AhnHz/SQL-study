@@ -27,7 +27,7 @@ ORDER BY JOB ASC(DESC)
 ```
 
 ## 조인
-### 1. EQUAL JOIN 
+### 1. EQUI JOIN 
 ```sql
 SELECT E.*, D.*
   FROM EMP E, DEPT D
